@@ -1,27 +1,15 @@
-var builder = WebApplication.CreateBuilder(args);
+using TicTacToe.Services;
+using TicTacToe.Models;
+using TicTacToe.Views;
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+namespace TicTacToe{
 
-var app = builder.Build();
+    public class Program{
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+        static void Main(string[] args){
+
+            NewGame newGame = new NewGame();
+            newGame.Start();
+        }
+    }
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
